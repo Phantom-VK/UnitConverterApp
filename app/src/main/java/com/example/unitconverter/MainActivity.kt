@@ -16,6 +16,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -74,6 +76,15 @@ fun UnitConverter(){
                     Text(text = "From")
                     Icon(imageVector = Icons.Default.ArrowDropDown, "Unit From DropDown Icon")
                 }
+
+                DropdownMenu(expanded = false, onDismissRequest = { /*TODO*/ }) {
+                    DropdownMenuItem(text = { Text(text = "Centimeters")}, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text(text = "Meters")}, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text(text = "Kilometers")}, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text(text = "Millimeters")}, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text(text = "Decimeters")}, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text(text = "Feet")}, onClick = { /*TODO*/ })
+                }
             }
             //Spacer to give space between two buttons
             Spacer(modifier = Modifier.width(80.dp))
@@ -82,6 +93,14 @@ fun UnitConverter(){
                 Button(onClick = { /*TODO*/ }) {
                     Text(text = "To")
                     Icon(imageVector = Icons.Default.ArrowDropDown, "Unit From DropDown Icon")
+                }
+                DropdownMenu(expanded = false, onDismissRequest = { /*TODO*/ }) {
+                    DropdownMenuItem(text = { Text(text = "Centimeters")}, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text(text = "Meters")}, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text(text = "Kilometers")}, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text(text = "Millimeters")}, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text(text = "Decimeters")}, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text(text = "Feet")}, onClick = { /*TODO*/ })
                 }
             }
         }
