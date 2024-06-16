@@ -91,7 +91,8 @@ fun UnitConverter(){
         Spacer(modifier = Modifier.height(16.dp))
         
         //TextField to input value
-        OutlinedTextField(value = "", onValueChange ={
+        OutlinedTextField(value = inputValue, onValueChange ={
+            inputValue = it
         /*Here we can put what will happen when outlinedtf changes*/}
         )
         Spacer(modifier = Modifier.height(16.dp))
@@ -99,37 +100,92 @@ fun UnitConverter(){
         Row() {
             val context = LocalContext.current
             //Button to select initial unit to convert from
-            Box{
 
-                Button(onClick = { /*TODO*/ }) {
-                    Text(text = "From")
+            //Input unit selection Box
+            Box{
+                var inputButtonText by remember {
+                    mutableStateOf("From")
+                }
+                //Input unit selection Button
+                Button(onClick = { iExpanded = !iExpanded }) {
+                    Text(text = inputButtonText)
                     Icon(imageVector = Icons.Default.ArrowDropDown, "Unit From DropDown Icon")
                 }
 
-                DropdownMenu(expanded = false, onDismissRequest = { /*TODO*/ }) {
-                    DropdownMenuItem(text = { Text(text = "Centimeters")}, onClick = { /*TODO*/ })
-                    DropdownMenuItem(text = { Text(text = "Meters")}, onClick = { /*TODO*/ })
-                    DropdownMenuItem(text = { Text(text = "Kilometers")}, onClick = { /*TODO*/ })
-                    DropdownMenuItem(text = { Text(text = "Millimeters")}, onClick = { /*TODO*/ })
-                    DropdownMenuItem(text = { Text(text = "Decimeters")}, onClick = { /*TODO*/ })
-                    DropdownMenuItem(text = { Text(text = "Feet")}, onClick = { /*TODO*/ })
+                DropdownMenu(expanded = iExpanded, onDismissRequest = { iExpanded = false
+                }) {
+                    DropdownMenuItem(text = { Text(text = "Centimeters")}, onClick = { inputUnit = "Centimeters"
+                        iExpanded = false
+                        inputButtonText = inputUnit})
+                    DropdownMenuItem(text = { Text(text = "Meters")}, onClick = { inputUnit = "Meters"
+                        iExpanded = false
+                        inputButtonText = inputUnit
+                        })
+                    DropdownMenuItem(text = { Text(text = "Kilometers")}, onClick = { inputUnit = "Kilometers"
+                        iExpanded = false
+                        inputButtonText = inputUnit
+                         })
+                    DropdownMenuItem(text = { Text(text = "Millimeters")}, onClick = { inputUnit = "Millimeters"
+                        iExpanded = false
+                        inputButtonText = inputUnit
+                         })
+                    DropdownMenuItem(text = { Text(text = "Decimeters")}, onClick = {inputUnit = "Decimeters"
+                        iExpanded = false
+                        inputButtonText = inputUnit
+                         })
+                    DropdownMenuItem(text = { Text(text = "Feet")}, onClick = { inputUnit = "Feet"
+                        iExpanded = false
+                        inputButtonText = inputUnit
+                         })
                 }
             }
             //Spacer to give space between two buttons
             Spacer(modifier = Modifier.width(80.dp))
-            //Button to select unit to convert to
+            //Button box to select unit to convert to
             Box {
-                Button(onClick = { /*TODO*/ }) {
-                    Text(text = "To")
+                var outputUnitButtonText by remember {
+                    mutableStateOf("To")
+                }
+                //Output unit selection Button
+                Button(onClick = {
+
+                    oExpanded = !oExpanded
+
+                     }
+                ) {
+                    Text(text = outputUnitButtonText)
                     Icon(imageVector = Icons.Default.ArrowDropDown, "Unit From DropDown Icon")
                 }
-                DropdownMenu(expanded = false, onDismissRequest = { /*TODO*/ }) {
-                    DropdownMenuItem(text = { Text(text = "Centimeters")}, onClick = { /*TODO*/ })
-                    DropdownMenuItem(text = { Text(text = "Meters")}, onClick = { /*TODO*/ })
-                    DropdownMenuItem(text = { Text(text = "Kilometers")}, onClick = { /*TODO*/ })
-                    DropdownMenuItem(text = { Text(text = "Millimeters")}, onClick = { /*TODO*/ })
-                    DropdownMenuItem(text = { Text(text = "Decimeters")}, onClick = { /*TODO*/ })
-                    DropdownMenuItem(text = { Text(text = "Feet")}, onClick = { /*TODO*/ })
+                DropdownMenu(expanded = oExpanded, onDismissRequest = { oExpanded = false }) {
+                    DropdownMenuItem(text = { Text(text = "Centimeters")}, onClick = { outputUnit = "Centimeters"
+                        oExpanded = false
+                        outputUnitButtonText = outputUnit
+
+                    })
+                    DropdownMenuItem(text = { Text(text = "Meters")}, onClick = { outputUnit = "Meters"
+                        oExpanded = false
+                        outputUnitButtonText = outputUnit
+
+                    })
+                    DropdownMenuItem(text = { Text(text = "Kilometers")}, onClick = { outputUnit = "Kilometers"
+                        oExpanded = false
+                        outputUnitButtonText = outputUnit
+
+                    })
+                    DropdownMenuItem(text = { Text(text = "Millimeters")}, onClick = { outputUnit = "Millimeters"
+                        oExpanded = false
+                        outputUnitButtonText = outputUnit
+                    })
+                    DropdownMenuItem(text = { Text(text = "Decimeters")}, onClick = {outputUnit = "Decimeters"
+                        oExpanded = false
+                        outputUnitButtonText = outputUnit
+
+                    })
+                    DropdownMenuItem(text = { Text(text = "Feet")}, onClick = { outputUnit = "Feet"
+                        oExpanded = false
+                        outputUnitButtonText = outputUnit
+                        })
+                }
                 }
             }
         }
@@ -139,7 +195,7 @@ fun UnitConverter(){
         }
 
     }
-}
+
 
 @Preview(showBackground = true)
 @Composable
